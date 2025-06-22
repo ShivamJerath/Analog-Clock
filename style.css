@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
+    color: #ffffff;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c); 
+}
+
+.container {
+    position: relative;
+}
+
+.clock {
+    width: 320px; 
+    height: 320px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)); 
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease; 
+}
+
+.clock:hover {
+    transform: scale(1.05); 
+}
+
+.clock span {
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset: 15px; 
+    text-align: center;
+}
+
+.clock span b {
+    transform: rotate(calc(-30deg * var(--i)));
+    display: inline-block;
+    font-size: 18px; 
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+    transition: color 0.3s ease; 
+}
+
+.clock span:hover b {
+    color: #00ffcc; 
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff, #cccccc); 
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); 
+}
+
+.hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: transform 0.1s ease; 
+}
+
+.hand i {
+    position: absolute;
+    background-color: var(--clr);
+    width: 5px; 
+    height: var(--h);
+    border-radius: 8px;
+    box-shadow: 0 0 8px var(--clr); 
+}
+
+.hour-hand i {
+    width: 6px;
+    height: 80px; 
+    background-color: #ff4d4d; 
+}
+
+.minute-hand i {
+    width: 4px;
+    height: 100px; 
+    background-color: #00ffcc; 
+}
+
+.second-hand i {
+    width: 2px;
+    height: 120px; 
+    background-color: #ffffff;
+}
+
+@keyframes tick {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.second-hand {
+    animation: tick 60s steps(60) infinite; /* Smooth ticking effect */
+}
